@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday – 20 December</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #ffe7ea, #fff8e5);
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: #ff99b8;
+            padding: 12px 0;
+            text-align: center;
+            border-bottom: 2px solid #e56b8d;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            background-color: #e0567a;
+        }
+
+        section {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        h1 {
+            color: #e6396a;
+            font-size: 42px;
+            text-shadow: 2px 2px 6px rgba(255, 200, 210, 0.8);
+        }
+
+        p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 18px;
+            color: #6d6875;
+            line-height: 1.7;
+        }
+
+        img {
+            border-radius: 15px;
+            margin-top: 15px;
+            box-shadow: 0 0 18px rgba(255, 176, 189, 0.6);
+        }
+
+        /* MUSIC BUTTONS */
+        .music-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .music-controls button {
+            padding: 10px 20px;
+            background-color: #ff8fab;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .music-controls button:hover {
+            background-color: #ff4d6d;
+        }
+
+        /* ★ SPARKLE EFFECT ★ */
+        .sparkle {
+            position: fixed;
+            top: -20px;
+            width: 8px;
+            height: 8px;
+            background: gold;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fall linear forwards;
+            filter: drop-shadow(0 0 6px gold);
+        }
+
+        @keyframes fall {
+            0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bg-music" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-controls">
+    <button onclick="bgm.play()">Play Music</button>
+    <button onclick="bgm.pause()">Pause Music</button>
+</div>
+
+<script>
+    const bgm = document.getElementById("bg-music");
+
+    window.addEventListener("pointerdown", () => {
+        bgm.play();
+    }, { once: true });
+</script>
+
+<!-- NAVIGATION -->
+<nav>
+    <a onclick="showSection('home')">HOME</a>
+    <a onclick="showSection('quests')">QUESTS</a>
+    <a onclick="showSection('wishes')">WISHES</a>
+    <a onclick="showSection('date')">DATE</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+    <h1>🎉 Happy Birthday! 🎂</h1>
+    <img src="kitty.webp" width="600">
+    <p>Celebrating a wonderful birthday on <b>20 December</b>.  
+    May this year bring joy and blessings to our dearest Halimatus Sadiyyah <3</p>
+</section>
+
+<!-- QUESTS -->
+<section id="quests">
+    <h1>✨ Special quests ✨</h1>
+    <img src="Kimmie.jpeg" width="300">
+    <img src="Oyen.jpeg" width="300">
+    <p>Kimmie sama oyen bilang: HAPPY BIRTHDAY!!</p>
+</section>
+
+<!-- WISHES -->
+<section id="wishes">
+    <h1>💌 Birthday Wishes</h1>
+  <p>
+        HALLLLOOO :3. Hari ini hari jadi kamu kann? Yah iyalah masa hari jadi aku? -.-
+tapi tapiiii    
+new  year new me yaakannnn hehe :3
+Aku doakan impian kamu tercapai semuanyaaa aaminn.
+
+
+
+
+<p>
+	In a world of ice and endless winter, your smile is the warmth that melts the cold and brings back life to the snow. You mean the world to me. You're my olaf hehe <3
+	</p>
+
+<p>
+	Semoga hari ini dan berikutnya menjadi hari paling bahagia dalam hidupmu!
+</p>
+
+
+
+
+    </p>
+</section>
+
+<!-- DATE -->
+<section id="date">
+    <h1>📅 Special Day</h1>
+    <p>This date shines a little brighter</p>
+    <img src="Calender.jpeg" width="300">
+
+<p> Because it belongs to someone extraordinary <3</p>
+</section>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+/* ★ UNIQUE GLITTER/SPARKLE SYSTEM ★
+   - Creates sparkles for 5 seconds
+   - Then automatically stops
+*/
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+
+    sparkle.style.left = Math.random() * window.innerWidth + "px";
+    sparkle.style.animationDuration = (Math.random() * 2 + 1) + "s";
+    sparkle.style.background = ["gold", "#ffd700", "#fff3b0", "#ffcad4"][Math.floor(Math.random()*4)];
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(()=> sparkle.remove(), 3000);
+}
+
+// Create sparkles for the first 5 seconds
+let sparkleInterval = setInterval(createSparkle, 80);
+
+setTimeout(() => {
+    clearInterval(sparkleInterval);
+}, 5000);
+</script>
+
+</body>
+</html>
